@@ -7,9 +7,31 @@
     </head>
     <body>
         <script type="text/javascript">
+            var dataset = [5, 10, 15, 20, 25];
+
             d3.select("body")
             .append("p")
             .text("UR YY, YY UR 4 D3");
+
+            d3.select("p").append("p").text('"...a bunch of data-less, un-mappable DOM elements. No one wants that."');
+
+            d3.select("body").selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .text(function(d) { return ">>>>> " + d; })
+            .style("color", function(d) {
+                if(d > 15) {
+                    return "green";
+                } else {
+                    return "red";
+                }
+            });
+
+
+
         </script>
+
+    
     </body>
 </html>     
